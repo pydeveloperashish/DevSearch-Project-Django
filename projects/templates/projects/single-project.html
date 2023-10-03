@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Single Project Template</h1>
+<h2>{{projectObj.title}}</h2>
+<hr>
+{% for tag in projectObj.tags.all %}
+    <span style="border: 1px solid gray">{{tag}}</span>
+{% endfor %}
+<hr>
+<h2>{{projectObj.description}}</h2>
+
+{% endblock content %}
