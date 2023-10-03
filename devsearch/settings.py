@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2%(#ay#3g6l#n^=y!(3sh%yecf4ro&u__$p%5z)r7ktf^y1khf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'devsearch.urls'
@@ -119,11 +120,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
+# to tell django where to look for static files and images
 STATICFILES_DIRS = [    
     os.path.join(BASE_DIR, 'static')                    
 ]
+
+# to tell django where to look for user uploaded images in static folder
+MEDIA_URL = '/images/'
+
+# to tell django where media images to be stored in static folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'images')
+
+# static folder for production.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -7,5 +7,5 @@ class ProjectForm(ModelForm):
         # we can either create a list and mention the fields 
         # we want to allow, or just write __all__ to allow all fields.
         # fields = '__all__'
-        fields = ['title', 'description', 'demo_link', 
+        fields = ['title', 'description', 'featured_image', 'demo_link', 
                   'source_link', 'tags']
