@@ -24,7 +24,10 @@ def createProfile(sender, instance, created, **kwargs):
     print("New Profile created")
     if created:
         user = instance
-        profile = Profile.objects.create(user = user, username = user.username)
+        profile = Profile.objects.create(user = user, 
+                                         username = user.username,
+                                         name = user.first_name, 
+                                         email = user.email)
     
     
 # post_save.connect(profileUpdated, sender = Profile)
