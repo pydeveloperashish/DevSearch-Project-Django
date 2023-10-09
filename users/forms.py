@@ -9,6 +9,13 @@ class CustomUserCreationForm(UserCreationForm):
         labels = {
             'first_name': 'Full Name'
         }
+        
+        
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+       
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})
 
 # Note:- We are creating fields like 'first_name', 'email', so the User Model
 # will be having these fields and its data. We have created Signals,
