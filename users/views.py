@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 from .models import Profile
+
 
 # Create your views here.
 
@@ -74,3 +76,16 @@ def userProfile(request, pk):
     context = {"profile": profile, 
                "topSkills": topskills, "otherSkills": otherskills}
     return render(request, 'users/user-profile.html', context)
+
+
+@login_required(login_url = 'login')
+def userAccount(request):
+    # Get the user profile
+    profile = request.user.profile
+    skills = profile.skill_set.all()
+    projects = profile.project_set.all()
+    
+    context = {"profile": profile, 
+               "skills": skills,
+               'projects': projects}
+    return render(request, 'users/account.html', context)
