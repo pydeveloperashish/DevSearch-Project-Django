@@ -9,7 +9,7 @@ from .utils import searchProjects, paginateProjects
 # Create your views here.
 def projects(request):
     projects, search_query = searchProjects(request)
-    custom_range, projects = paginateProjects(request, projects, results = 2)
+    custom_range, projects = paginateProjects(request, projects, results = 6)
     
     context = {'projectList': projects, 'search_query': search_query, 
               'custom_range': custom_range}
