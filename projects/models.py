@@ -29,7 +29,7 @@ class Project(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['created']    
+        ordering = ['-vote_ratio', '-vote_total', 'title']    
 
     # using propery decorator, we gonna use this function as an attribute
     # instead of as a method...
