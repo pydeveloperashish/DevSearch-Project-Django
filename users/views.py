@@ -28,7 +28,7 @@ def loginUser(request):
         user = authenticate(username = username, password = password)
         if user:
             login(request, user)
-            return redirect('profiles')
+            return redirect(request.GET['next'] if 'next' in request.GET else 'account')
         else:
             messages.error(request, "Username or Password is incorrect")
     return render(request, 'users/login_register.html')
