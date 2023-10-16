@@ -60,7 +60,7 @@
               </div>
               {% endfor %}
 
-
+              {% if otherSkills %}
               <h3 class="devInfo__subtitle">Other Skills</h3>
               <div class="devInfo__otherSkills">
             {% for skill in otherSkills %}
@@ -69,6 +69,7 @@
                 </span>
             {% endfor %}
               </div>
+              {% endif %}
             </div>
           </div>
           <div class="devInfo">
