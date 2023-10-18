@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
 from django.contrib import messages
-from .models import Profile, Skill
+from .models import Profile, Skill, Message
 from .utils import searchProfiles, paginateProfiles
 
 # Create your views here.
@@ -151,5 +151,19 @@ def deleteSkill(request, pk):
 
 @login_required(login_url = 'login')
 def inbox(request):
-    context = {}
+    profile = request.user.profile
+    messageRequest = profile.messages.all()
+    unreadCount = messageRequest.filter(is_read = False).count()
+    context = {'messageRequest': messageRequest, 'unreadCount': unreadCount}
     return render(request, 'users/inbox.html', context)
+
+
+@login_required(login_url = 'login')
+def viewMessage(request, pk):
+    profile = request.user.profile
+    message = profile.messages.get(id = pk)
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+    context = {'message': message}
+    return render(request, 'users/message.html', context)
