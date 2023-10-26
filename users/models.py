@@ -28,6 +28,15 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.username)
     
+       
+    @property
+    def imageURL(self):
+        try:
+            url = self.featured_image.url
+        except:
+            url = ''
+        return url 
+    
     
 class Skill(models.Model):
     owner = models.ForeignKey(Profile, on_delete = models.CASCADE,

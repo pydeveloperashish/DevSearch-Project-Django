@@ -17,6 +17,11 @@ def profileUpdated(sender, instance, created, **kwargs):
 def deleteUser(sender, instance, **kwargs):
     print("Deleted User...")
     print("Instance: %s" % instance)
+    # try:
+    #     user = instance.user
+    #     user.delete()
+    # except:
+    #     pass
 
 
 # Automatically create a profile when a new user is created...

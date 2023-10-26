@@ -30,7 +30,7 @@
 
         </div>
         <div class="column column--2of3">
-          <img class="singleProject__preview" src="{{ projectObj.featured_image.url }}" alt="portfolio thumbnail" />
+          <img class="singleProject__preview" src="{{ projectObj.imageURL }}" alt="portfolio thumbnail" />
           {% if projectObj.owner.id %}
             <a href="{% url 'user-profile' projectObj.owner.id %}" class="singleProject__developer">{{projectObj.owner.name}}</a>
           {% else %}
