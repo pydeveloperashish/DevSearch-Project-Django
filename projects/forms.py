@@ -9,7 +9,7 @@ class ProjectForm(ModelForm):
         # we want to allow, or just write __all__ to allow all fields.
         # fields = '__all__'
         fields = ['title', 'description', 'featured_image', 'demo_link', 
-                  'source_link', 'tags']
+                  'source_link']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
